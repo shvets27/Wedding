@@ -1,0 +1,62 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build output
+dist/
+.vite/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# PHP files (не нужны для Vue проекта)
+*.php
+
+# Python scripts (не нужны)
+*.py
+
+# Старые изображения (используются только через ImageBan)
+IMG_*.JPG
+*.jpg
+*.png
+*.gif
+*.mp4
+*.otf
+
+# Старые секции Figma (не используются)
+*-section.png
+Frame*.png
+
+# Старые файлы
+script.js
+styles.css
+event.ics
+copy_images.py
+
+# Дублирующаяся папка
+wedding/
