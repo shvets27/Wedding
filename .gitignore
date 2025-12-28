@@ -69,3 +69,6 @@ copy_images.py
 
 # Дублирующаяся папка
 wedding/
+
+# Скрипты для удаления сообщений (не нужны в продакшене)
+delete-telegram-messages.js

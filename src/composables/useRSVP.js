@@ -1,5 +1,12 @@
-const TELEGRAM_BOT_TOKEN = '8548278322:AAEqnfAgxru4XpzWMYx8dz5J1oWojalbAOM'
-const TELEGRAM_CHAT_ID = '647597624'
+// Используем переменные окружения из GitHub Secrets при сборке
+// ВАЖНО: токен все равно будет виден в браузере (это ограничение статических сайтов)
+// Для локальной разработки создайте файл .env.local с этими переменными
+const TELEGRAM_BOT_TOKEN = import.meta.env.VITE_TELEGRAM_BOT_TOKEN || ''
+
+// Список Chat ID для отправки сообщений (можно несколько)
+const TELEGRAM_CHAT_IDS = import.meta.env.VITE_TELEGRAM_CHAT_IDS 
+  ? import.meta.env.VITE_TELEGRAM_CHAT_IDS.split(',').map(id => id.trim())
+  : ['647597624', '506432416'] // Значения по умолчанию, если не указаны в env
 
 export function useRSVP() {
   const submitRSVP = async (formData) => {
@@ -35,10 +42,12 @@ ${formData.message || 'Нет пожеланий'}
 ⏰ <i>${new Date().toLocaleString('ru-RU')}</i>
     `.trim()
 
-    // Отправляем в Telegram (не блокируем UI)
-    if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
-      sendToTelegram(telegramMessage).catch(err => {
-        console.error('Ошибка отправки в Telegram (но данные сохранены):', err)
+    // Отправляем в Telegram во все указанные чаты (не блокируем UI)
+    if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_IDS.length > 0) {
+      TELEGRAM_CHAT_IDS.forEach(chatId => {
+        sendToTelegram(telegramMessage, chatId).catch(err => {
+          console.error(`Ошибка отправки в Telegram (chat_id: ${chatId}, но данные сохранены):`, err)
+        })
       })
     }
   }
@@ -48,11 +57,11 @@ ${formData.message || 'Нет пожеланий'}
   }
 }
 
-async function sendToTelegram(message) {
+async function sendToTelegram(message, chatId) {
   const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`
   
   const formData = new URLSearchParams()
-  formData.append('chat_id', TELEGRAM_CHAT_ID)
+  formData.append('chat_id', chatId)
   formData.append('text', message)
   formData.append('parse_mode', 'HTML')
   
