@@ -51,19 +51,18 @@ import { ref, onMounted } from 'vue'
 
 // Массив всех доступных фото для перелистывания
 const allPhotos = ref([
-  { src: 'https://i3.imageban.ru/out/2025/12/28/0959f80050cec99d55aeb531ed044eb0.jpg', alt: 'Фото 1' },
+  { src: 'https://i5.imageban.ru/out/2025/12/29/0b631d9aa2e40c6502e95374ec801cb7.png', alt: 'Фото 1' },
   { src: 'https://i1.imageban.ru/out/2025/12/28/1bae743e1aedc8d075e2b1a4329a6e77.jpg', alt: 'Фото 2' },
-  { src: 'https://i5.imageban.ru/out/2025/12/28/d58356be6bb059e71de464e639e4b993.jpg', alt: 'Фото 3' },
+  { src: 'https://i2.imageban.ru/out/2025/12/29/092e592b184b0711e670e49f67cef3e0.jpg', alt: 'Фото 3' },
   { src: 'https://i4.imageban.ru/out/2025/12/28/7b81e662b97adb878c7c85987edb4634.jpg', alt: 'Фото 4' },
   { src: 'https://i8.imageban.ru/out/2025/12/28/7f442ee553ef776d4a8bbb9f3d01a6f7.jpg', alt: 'Фото 5' },
   { src: 'https://i2.imageban.ru/out/2025/12/28/f0c5e3906c8fc5b6f8402385f328f7fe.jpg', alt: 'Фото 6' },
-  { src: 'https://i8.imageban.ru/out/2025/12/28/9aceae495369a5a43af3ea6439168916.jpg', alt: 'Фото 7' },
+  { src: 'https://i8.imageban.ru/out/2025/12/29/4a2e74c44c8867c618a222392e5d8fa1.jpg', alt: 'Фото 7' },
   { src: 'https://i5.imageban.ru/out/2025/12/28/5eb9497d452a47d07bcc1e4a0adc3cd8.jpg', alt: 'Фото 8' },
   { src: 'https://i1.imageban.ru/out/2025/12/28/ec430c2a6776e1a1e15c53a30bd5965a.jpg', alt: 'Фото 9' },
   { src: 'https://i2.imageban.ru/out/2025/12/28/273dc45398fa6fc738ed5ac311e9f606.jpg', alt: 'Фото 10' },
   { src: 'https://i1.imageban.ru/out/2025/12/28/c06a2db95287c92ff9d8476069236f08.jpg', alt: 'Фото 11' },
-  { src: 'https://i1.imageban.ru/out/2025/12/28/cb0a54113d81efcefb06c418e73bf535.jpg', alt: 'Фото 12' },
-  { src: 'https://i1.imageban.ru/out/2025/12/28/485adcb273766d3761ae8f37c9d43d5c.jpg', alt: 'Фото 13' }
+  { src: 'https://i1.imageban.ru/out/2025/12/28/cb0a54113d81efcefb06c418e73bf535.jpg', alt: 'Фото 12' }
 ])
 
 const currentPhotoIndex = ref(0)
@@ -115,6 +114,8 @@ const preloadImages = () => {
 }
 
 onMounted(() => {
+  // Убеждаемся, что показывается первое фото
+  currentPhotoIndex.value = 0
   preloadImages()
 })
 

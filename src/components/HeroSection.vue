@@ -75,7 +75,7 @@ onMounted(() => {
 
 .hero-initials {
   position: absolute;
-  top: 0;
+  top: -30px;
   left: 50%;
   transform: translateX(-50%) translateY(0) scale(0.6);
   transform-origin: center top;
@@ -103,7 +103,7 @@ onMounted(() => {
 
 .hero-date-wrapper {
   position: absolute;
-  top: 235px;
+  top: 200px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 3;
@@ -138,7 +138,7 @@ onMounted(() => {
   }
   
   .hero-date-wrapper {
-    top: 205px;
+    top: 175px;
   }
   
   .hero-date {
@@ -158,7 +158,7 @@ onMounted(() => {
   }
   
   .hero-date-wrapper {
-    top: 220px;
+    top: 190px;
   }
   
   .hero-date {
