@@ -125,9 +125,9 @@ onMounted(() => {
 
 .hero-date {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(0.9rem, 4vw, 1.6rem);
+  font-size: clamp(1.2rem, 4.5vw, 1.6rem);
   font-weight: 400;
-  letter-spacing: clamp(1px, 0.5vw, 2px);
+  letter-spacing: clamp(1.5px, 0.6vw, 2px);
   color: #2c2c2c;
   text-shadow: 0 1px 3px rgba(255, 255, 255, 0.3);
   white-space: nowrap;
@@ -137,13 +137,13 @@ onMounted(() => {
 /* Планшеты и большие телефоны (768px - 1024px) */
 @media (max-width: 1024px) and (min-width: 769px) {
   .hero-initials-image {
-    width: clamp(280px, 35vw, 380px);
-    height: clamp(280px, 35vw, 380px);
+    width: clamp(320px, 40vw, 420px);
+    height: clamp(320px, 40vw, 420px);
   }
   
   .hero-initials {
     top: -20px;
-    transform: translateX(-50%) translateY(0) scale(0.55);
+    transform: translateX(-50%) translateY(0) scale(0.6);
   }
   
   .hero-date-wrapper {
@@ -154,13 +154,13 @@ onMounted(() => {
 /* Средние телефоны (481px - 768px) */
 @media (max-width: 768px) {
   .hero-initials-image {
-    width: clamp(220px, 50vw, 300px);
-    height: clamp(220px, 50vw, 300px);
+    width: clamp(280px, 55vw, 350px);
+    height: clamp(280px, 55vw, 350px);
   }
   
   .hero-initials {
     top: -15px;
-    transform: translateX(-50%) translateY(0) scale(0.5);
+    transform: translateX(-50%) translateY(0) scale(0.65);
   }
   
   .hero-date-wrapper {
@@ -168,21 +168,21 @@ onMounted(() => {
   }
   
   .hero-date {
-    font-size: clamp(0.95rem, 3.5vw, 1.3rem);
-    letter-spacing: clamp(0.8px, 0.4vw, 1.5px);
+    font-size: clamp(1.1rem, 4vw, 1.4rem);
+    letter-spacing: clamp(1px, 0.5vw, 1.8px);
   }
 }
 
 /* Маленькие телефоны (360px - 480px) */
 @media (max-width: 480px) {
   .hero-initials-image {
-    width: clamp(180px, 55vw, 250px);
-    height: clamp(180px, 55vw, 250px);
+    width: clamp(240px, 60vw, 300px);
+    height: clamp(240px, 60vw, 300px);
   }
   
   .hero-initials {
     top: -10px;
-    transform: translateX(-50%) translateY(0) scale(0.45);
+    transform: translateX(-50%) translateY(0) scale(0.6);
   }
   
   .hero-date-wrapper {
@@ -190,21 +190,21 @@ onMounted(() => {
   }
   
   .hero-date {
-    font-size: clamp(0.85rem, 3vw, 1.1rem);
-    letter-spacing: clamp(0.5px, 0.3vw, 1px);
+    font-size: clamp(1rem, 4.2vw, 1.25rem);
+    letter-spacing: clamp(0.8px, 0.4vw, 1.2px);
   }
 }
 
 /* Очень маленькие телефоны (до 360px) */
 @media (max-width: 360px) {
   .hero-initials-image {
-    width: clamp(150px, 60vw, 200px);
-    height: clamp(150px, 60vw, 200px);
+    width: clamp(200px, 65vw, 260px);
+    height: clamp(200px, 65vw, 260px);
   }
   
   .hero-initials {
     top: -5px;
-    transform: translateX(-50%) translateY(0) scale(0.4);
+    transform: translateX(-50%) translateY(0) scale(0.55);
   }
   
   .hero-date-wrapper {
@@ -212,21 +212,21 @@ onMounted(() => {
   }
   
   .hero-date {
-    font-size: clamp(0.75rem, 2.8vw, 0.95rem);
-    letter-spacing: clamp(0.3px, 0.25vw, 0.8px);
+    font-size: clamp(0.95rem, 3.8vw, 1.15rem);
+    letter-spacing: clamp(0.6px, 0.35vw, 1px);
   }
 }
 
 /* Ландшафтная ориентация на телефонах */
 @media (max-width: 768px) and (orientation: landscape) {
   .hero-initials-image {
-    width: clamp(150px, 25vh, 220px);
-    height: clamp(150px, 25vh, 220px);
+    width: clamp(180px, 30vh, 250px);
+    height: clamp(180px, 30vh, 250px);
   }
   
   .hero-initials {
     top: -5px;
-    transform: translateX(-50%) translateY(0) scale(0.4);
+    transform: translateX(-50%) translateY(0) scale(0.5);
   }
   
   .hero-date-wrapper {
@@ -234,7 +234,7 @@ onMounted(() => {
   }
   
   .hero-date {
-    font-size: clamp(0.8rem, 2.5vh, 1rem);
+    font-size: clamp(0.95rem, 3vh, 1.1rem);
   }
 }
 
