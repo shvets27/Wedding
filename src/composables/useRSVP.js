@@ -1,13 +1,14 @@
 // Используем переменные окружения из GitHub Secrets при сборке
 // ВАЖНО: токен все равно будет виден в браузере (это ограничение статических сайтов)
 // Для локальной разработки создайте файл .env.local с этими переменными
-// ВАЖНО: Замените этот токен на новый через GitHub Secrets после настройки!
-const TELEGRAM_BOT_TOKEN = import.meta.env.VITE_TELEGRAM_BOT_TOKEN || '8548278322:AAEqnfAgxru4XpzWMYx8dz5J1oWojalbAOM'
+// НИКОГДА не коммитьте токен в код! Используйте только GitHub Secrets или .env.local
+const TELEGRAM_BOT_TOKEN = import.meta.env.VITE_TELEGRAM_BOT_TOKEN || ''
 
 // Список Chat ID для отправки сообщений (можно несколько)
+// НИКОГДА не коммитьте Chat ID в код! Используйте только GitHub Secrets или .env.local
 const TELEGRAM_CHAT_IDS = import.meta.env.VITE_TELEGRAM_CHAT_IDS 
   ? import.meta.env.VITE_TELEGRAM_CHAT_IDS.split(',').map(id => id.trim())
-  : ['647597624', '506432416'] // Значения по умолчанию, если не указаны в env
+  : [] // Должны быть указаны через переменные окружения
 
 export function useRSVP() {
   const submitRSVP = async (formData) => {
