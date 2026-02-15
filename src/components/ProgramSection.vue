@@ -23,17 +23,17 @@ import { ref } from 'vue'
 
 const timeline = ref([
   {
-    time: '12:00',
+    time: '14:00',
     title: 'Фуршет',
     description: 'Сбор гостей'
   },
   {
-    time: '13:00',
+    time: '15:00',
     title: 'Церемония',
     description: 'Выездная регистрация'
   },
   {
-    time: '14:00',
+    time: '16:00',
     title: 'Банкет',
     description: 'Время вкусной еды, танцев и веселья!'
   },

@@ -62,7 +62,19 @@
         :src="dressCodePhotos[currentIndex].src" 
         :alt="dressCodePhotos[currentIndex].alt" 
         class="lightbox-image"
+        :class="{ 'lightbox-image-zoomed': isZoomed }"
+        @dblclick="toggleZoom"
+        @click.stop
       >
+      <!-- Кнопка зума -->
+      <button 
+        v-if="dressCodePhotos[currentIndex].type === 'photo'"
+        class="lightbox-zoom"
+        @click.stop="toggleZoom"
+        :title="isZoomed ? 'Уменьшить' : 'Увеличить'"
+      >
+        {{ isZoomed ? '−' : '+' }}
+      </button>
       <!-- Текстовая карточка -->
       <div 
         v-if="dressCodePhotos[currentIndex].type === 'text'"
@@ -183,10 +195,12 @@ const dressCodePhotos = ref([
 
 const lightboxOpen = ref(false)
 const currentIndex = ref(0)
+const isZoomed = ref(false)
 
 const openDressCodeGallery = () => {
   if (dressCodePhotos.value.length > 0) {
     currentIndex.value = 0
+    isZoomed.value = false
     lightboxOpen.value = true
     document.body.style.overflow = 'hidden'
   }
@@ -194,14 +208,21 @@ const openDressCodeGallery = () => {
 
 const closeLightbox = () => {
   lightboxOpen.value = false
+  isZoomed.value = false
   document.body.style.overflow = ''
 }
 
+const toggleZoom = () => {
+  isZoomed.value = !isZoomed.value
+}
+
 const nextPhoto = () => {
+  isZoomed.value = false
   currentIndex.value = (currentIndex.value + 1) % dressCodePhotos.value.length
 }
 
 const prevPhoto = () => {
+  isZoomed.value = false
   currentIndex.value = (currentIndex.value - 1 + dressCodePhotos.value.length) % dressCodePhotos.value.length
 }
 
@@ -234,6 +255,8 @@ const handleSwipe = () => {
   
   // Проверяем, что свайп горизонтальный (больше горизонтального движения, чем вертикального)
   if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
+    // Сбрасываем зум при свайпе
+    isZoomed.value = false
     if (deltaX > 0) {
       // Свайп вправо - предыдущее фото
       prevPhoto()
@@ -476,6 +499,15 @@ const handleSwipe = () => {
   max-width: 90%;
   max-height: 90%;
   object-fit: contain;
+  transition: transform 0.3s ease, max-width 0.3s ease, max-height 0.3s ease;
+  cursor: zoom-in;
+}
+
+.lightbox-image-zoomed {
+  max-width: 150%;
+  max-height: 150%;
+  cursor: zoom-out;
+  transform: scale(1.5);
 }
 
 .lightbox-text-card {
@@ -558,6 +590,34 @@ const handleSwipe = () => {
   background: rgba(255, 255, 255, 0.4);
 }
 
+.lightbox-zoom {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  z-index: 10001;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.lightbox-zoom:hover {
+  background: rgba(255, 255, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.8);
+  transform: translateX(-50%) scale(1.1);
+}
+
 @media (max-width: 768px) {
   .lightbox-close {
     top: 10px;
@@ -580,6 +640,13 @@ const handleSwipe = () => {
     right: 15px;
   }
   
+  .lightbox-zoom {
+    bottom: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 1.8rem;
+  }
+  
   .lightbox-text-card {
     max-width: 90%;
     padding: 40px 30px;
@@ -588,6 +655,12 @@ const handleSwipe = () => {
   .dresscode-text {
     font-size: 1.2rem;
     line-height: 1.5;
+  }
+  
+  .lightbox-image-zoomed {
+    max-width: 200%;
+    max-height: 200%;
+    transform: scale(2);
   }
 }
 </style>
