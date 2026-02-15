@@ -144,7 +144,6 @@ const dressCodePhotos = ref([
   { src: 'https://i2.imageban.ru/out/2025/12/24/80b50a77dbafbbab0f9ad0f5e8568526.jpg', alt: 'Dress code photo 12' },
   { src: 'https://i1.imageban.ru/out/2025/12/24/52dcb11949909c879350e4d1e239b03a.jpg', alt: 'Dress code photo 13' },
   { src: 'https://i7.imageban.ru/out/2025/12/24/684d1321eadaacfe2e00b3587815a6e7.jpg', alt: 'Dress code photo 14' },
-  { src: 'https://i4.imageban.ru/out/2025/12/24/f2189ba861d01772c0cb1bc8c2eb1874.jpg', alt: 'Dress code photo 15' },
   { src: 'https://i5.imageban.ru/out/2025/12/24/5355ba5ad44619acd3ec3b65afe95fb8.jpg', alt: 'Dress code photo 16' },
   { src: 'https://i4.imageban.ru/out/2025/12/24/c4ae1ebabfcc80c9ca4b292598a020f0.jpg', alt: 'Dress code photo 17' },
   { src: 'https://i4.imageban.ru/out/2025/12/24/63d8ae87ec22526233d08e435c0cc6d7.jpg', alt: 'Dress code photo 18' }
