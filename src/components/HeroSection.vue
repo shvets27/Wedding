@@ -21,7 +21,7 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue'
 
-const heroImage = 'https://i5.imageban.ru/out/2025/12/29/0b631d9aa2e40c6502e95374ec801cb7.png'
+const heroImage = 'https://i4.imageban.ru/out/2026/02/15/4415090082b7be61869f9845cb08c9e5.jpg'
 const showInitials = ref(false)
 const initialsImageSrc = computed(() => import.meta.env.BASE_URL + 'initials.png')
 
@@ -67,7 +67,6 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 60% center;
   position: absolute;
   top: 0;
   left: 0;
