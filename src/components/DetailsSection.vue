@@ -45,7 +45,14 @@
     </div>
     
     <!-- Lightbox для галереи дресс-кода -->
-    <div v-if="lightboxOpen" class="lightbox" @click="closeLightbox">
+    <div 
+      v-if="lightboxOpen" 
+      class="lightbox" 
+      @click="closeLightbox"
+      @touchstart="handleTouchStart"
+      @touchmove="handleTouchMove"
+      @touchend="handleTouchEnd"
+    >
       <button class="lightbox-close" @click="closeLightbox">×</button>
       <button class="lightbox-prev" @click.stop="prevPhoto">‹</button>
       <button class="lightbox-next" @click.stop="nextPhoto">›</button>
@@ -171,6 +178,45 @@ const nextPhoto = () => {
 
 const prevPhoto = () => {
   currentIndex.value = (currentIndex.value - 1 + dressCodePhotos.value.length) % dressCodePhotos.value.length
+}
+
+// Обработка свайпов для lightbox галереи дресс-кода
+let touchStartX = 0
+let touchStartY = 0
+let touchEndX = 0
+let touchEndY = 0
+
+const handleTouchStart = (e) => {
+  touchStartX = e.touches[0].clientX
+  touchStartY = e.touches[0].clientY
+}
+
+const handleTouchMove = (e) => {
+  // Предотвращаем скролл страницы при свайпе
+  e.preventDefault()
+}
+
+const handleTouchEnd = (e) => {
+  touchEndX = e.changedTouches[0].clientX
+  touchEndY = e.changedTouches[0].clientY
+  handleSwipe()
+}
+
+const handleSwipe = () => {
+  const deltaX = touchEndX - touchStartX
+  const deltaY = touchEndY - touchStartY
+  const minSwipeDistance = 50 // Минимальная дистанция для свайпа
+  
+  // Проверяем, что свайп горизонтальный (больше горизонтального движения, чем вертикального)
+  if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
+    if (deltaX > 0) {
+      // Свайп вправо - предыдущее фото
+      prevPhoto()
+    } else {
+      // Свайп влево - следующее фото
+      nextPhoto()
+    }
+  }
 }
 </script>
 

@@ -15,6 +15,9 @@
               :key="currentPhotoIndex"
               class="photo-slide"
               @click="openLightbox"
+              @touchstart="handleTouchStart"
+              @touchmove="handleTouchMove"
+              @touchend="handleTouchEnd"
             >
               <div class="photo-wrapper">
                 <img :src="allPhotos[currentPhotoIndex].src" :alt="allPhotos[currentPhotoIndex].alt" class="photo-image">
@@ -37,7 +40,14 @@
     </div>
     
     <!-- Lightbox -->
-    <div v-if="lightboxOpen && allPhotos.length > 0 && allPhotos[currentPhotoIndex]" class="lightbox" @click="closeLightbox">
+    <div 
+      v-if="lightboxOpen && allPhotos.length > 0 && allPhotos[currentPhotoIndex]" 
+      class="lightbox" 
+      @click="closeLightbox"
+      @touchstart="handleLightboxTouchStart"
+      @touchmove="handleLightboxTouchMove"
+      @touchend="handleLightboxTouchEnd"
+    >
       <button class="lightbox-close" @click="closeLightbox">×</button>
       <button class="lightbox-prev" @click.stop="lightboxPrevPhoto">‹</button>
       <button class="lightbox-next" @click.stop="lightboxNextPhoto">›</button>
@@ -103,6 +113,84 @@ const lightboxNextPhoto = () => {
 
 const lightboxPrevPhoto = () => {
   prevPhoto()
+}
+
+// Обработка свайпов для основного слайдера
+let touchStartX = 0
+let touchStartY = 0
+let touchEndX = 0
+let touchEndY = 0
+
+const handleTouchStart = (e) => {
+  touchStartX = e.touches[0].clientX
+  touchStartY = e.touches[0].clientY
+}
+
+const handleTouchMove = (e) => {
+  // Предотвращаем скролл страницы при свайпе
+  e.preventDefault()
+}
+
+const handleTouchEnd = (e) => {
+  touchEndX = e.changedTouches[0].clientX
+  touchEndY = e.changedTouches[0].clientY
+  handleSwipe()
+}
+
+// Обработка свайпов для lightbox
+let lightboxTouchStartX = 0
+let lightboxTouchStartY = 0
+let lightboxTouchEndX = 0
+let lightboxTouchEndY = 0
+
+const handleLightboxTouchStart = (e) => {
+  lightboxTouchStartX = e.touches[0].clientX
+  lightboxTouchStartY = e.touches[0].clientY
+}
+
+const handleLightboxTouchMove = (e) => {
+  // Предотвращаем скролл страницы при свайпе
+  e.preventDefault()
+}
+
+const handleLightboxTouchEnd = (e) => {
+  lightboxTouchEndX = e.changedTouches[0].clientX
+  lightboxTouchEndY = e.changedTouches[0].clientY
+  handleLightboxSwipe()
+}
+
+const handleSwipe = () => {
+  const deltaX = touchEndX - touchStartX
+  const deltaY = touchEndY - touchStartY
+  const minSwipeDistance = 50 // Минимальная дистанция для свайпа
+  
+  // Проверяем, что свайп горизонтальный (больше горизонтального движения, чем вертикального)
+  if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
+    if (deltaX > 0) {
+      // Свайп вправо - предыдущее фото
+      prevPhoto()
+    } else {
+      // Свайп влево - следующее фото
+      nextPhoto()
+    }
+  }
+}
+
+const handleLightboxSwipe = () => {
+  const deltaX = lightboxTouchEndX - lightboxTouchStartX
+  const deltaY = lightboxTouchEndY - lightboxTouchStartY
+  const minSwipeDistance = 50 // Минимальная дистанция для свайпа
+  
+  // Проверяем, что свайп горизонтальный (больше горизонтального движения, чем вертикального)
+  if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
+    if (deltaX > 0) {
+      // Свайп вправо - предыдущее фото
+      prevPhoto()
+    } else {
+      // Свайп влево - следующее фото
+      nextPhoto()
+    }
+  }
 }
 
 // Предзагрузка всех фотографий
