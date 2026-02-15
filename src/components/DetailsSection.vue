@@ -85,17 +85,17 @@ const details = ref([
     type: 'date'
   },
   {
+    title: 'DRESS CODE',
+    main: 'Вечерний наряд',
+    note: 'Мы будем рады видеть вас в праздничных нарядах',
+    type: 'dresscode'
+  },
+  {
     title: 'VENUE',
     main: 'Усадьба Марьино',
     time: 'Адрес места проведения',
     type: 'location',
     mapLink: 'https://yandex.ru/maps/-/CLDPUD4G'
-  },
-  {
-    title: 'DRESS CODE',
-    main: 'Вечерний наряд',
-    note: 'Мы будем рады видеть вас в праздничных нарядах',
-    type: 'dresscode'
   }
 ])
 
@@ -175,7 +175,7 @@ const dressCodePhotos = ref([
   // Дополнительные фотографии
   { type: 'photo', src: 'https://i3.imageban.ru/out/2026/02/15/249ee7ba3732a18c84aca5ec533249ec.jpg', alt: 'Dress code color palette 1' },
   { type: 'photo', src: 'https://i1.imageban.ru/out/2026/02/15/893d89abc3aa3763cb248100c1f46944.jpg', alt: 'Dress code color palette 2' },
-  { type: 'photo', src: 'https://i5.imageban.ru/out/2026/02/15/ec06f9f870321abd7245e34b22da72a1.jpg', alt: 'Dress code color palette 3' },
+  { type: 'photo', src: 'https://i7.imageban.ru/out/2026/02/15/98d85378c103713e235eec5a7f3c816c.jpg', alt: 'Dress code color palette 3' },
   { type: 'photo', src: 'https://i2.imageban.ru/out/2026/02/15/3294dc9e126499419655d9a961756e39.jpg', alt: 'Dress code color palette 4' },
   { type: 'photo', src: 'https://i5.imageban.ru/out/2026/02/15/674f1db4531b0e16a847fb26c3563005.jpg', alt: 'Dress code color palette 5' },
   { type: 'photo', src: 'https://i1.imageban.ru/out/2026/02/15/d03813bee4c3be3fcc703bd96859a3a7.jpg', alt: 'Dress code color palette 6' }
