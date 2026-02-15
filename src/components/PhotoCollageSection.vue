@@ -61,7 +61,7 @@ import { ref, onMounted } from 'vue'
 
 // Массив всех доступных фото для перелистывания
 const allPhotos = ref([
-  { src: 'https://i4.imageban.ru/out/2026/02/15/09fa5b57c6ffc78a600a5fb222596a7c.jpg', alt: 'Фото 1' },
+  { src: 'https://i8.imageban.ru/out/2026/02/15/eb49c6f27dc1c50caf716f0e605c1be6.jpg', alt: 'Фото 1' },
   { src: 'https://i1.imageban.ru/out/2025/12/28/1bae743e1aedc8d075e2b1a4329a6e77.jpg', alt: 'Фото 2' },
   { src: 'https://i2.imageban.ru/out/2025/12/29/092e592b184b0711e670e49f67cef3e0.jpg', alt: 'Фото 3' },
   { src: 'https://i4.imageban.ru/out/2025/12/28/7b81e662b97adb878c7c85987edb4634.jpg', alt: 'Фото 4' },
