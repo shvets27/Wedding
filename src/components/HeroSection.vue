@@ -21,7 +21,7 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue'
 
-const heroImage = 'https://i8.imageban.ru/out/2025/12/22/fe76c72faee06f7f8c697e11f2738fd1.jpg'
+const heroImage = 'https://i4.imageban.ru/out/2025/12/22/51ba624cfed8928392a91343cd4ea534.jpg'
 const showInitials = ref(false)
 const initialsImageSrc = computed(() => import.meta.env.BASE_URL + 'initials.png')
 
