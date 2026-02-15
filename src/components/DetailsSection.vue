@@ -56,7 +56,20 @@
       <button class="lightbox-close" @click="closeLightbox">×</button>
       <button class="lightbox-prev" @click.stop="prevPhoto">‹</button>
       <button class="lightbox-next" @click.stop="nextPhoto">›</button>
-      <img :src="dressCodePhotos[currentIndex].src" :alt="dressCodePhotos[currentIndex].alt" class="lightbox-image">
+      <!-- Фото -->
+      <img 
+        v-if="dressCodePhotos[currentIndex].type === 'photo'"
+        :src="dressCodePhotos[currentIndex].src" 
+        :alt="dressCodePhotos[currentIndex].alt" 
+        class="lightbox-image"
+      >
+      <!-- Текстовая карточка -->
+      <div 
+        v-if="dressCodePhotos[currentIndex].type === 'text'"
+        class="lightbox-text-card"
+      >
+        <p class="dresscode-text">{{ dressCodePhotos[currentIndex].text }}</p>
+      </div>
     </div>
   </section>
 </template>
@@ -137,23 +150,35 @@ const openMap = (mapLink) => {
 }
 
 const dressCodePhotos = ref([
-  { src: 'https://i4.imageban.ru/out/2025/12/24/502e8967b8d11b76cedbdf2a0878fc8b.jpg', alt: 'Dress code photo 1' },
-  { src: 'https://i3.imageban.ru/out/2025/12/24/aa22ef772f48a5827a28f13a1d3dd08c.jpg', alt: 'Dress code photo 2' },
-  { src: 'https://i5.imageban.ru/out/2025/12/24/400f55f579cfbe41f701798a9d73bfae.jpg', alt: 'Dress code photo 3' },
-  { src: 'https://i1.imageban.ru/out/2025/12/24/34e73e48401bc585c801d75d878459e8.jpg', alt: 'Dress code photo 4' },
-  { src: 'https://i2.imageban.ru/out/2025/12/24/90a9eeafabe97e2fd63d6b79bd6696d8.jpg', alt: 'Dress code photo 5' },
-  { src: 'https://i3.imageban.ru/out/2025/12/24/0a22b71b7bcd3705bfe0b6ec7a2b754d.jpg', alt: 'Dress code photo 6' },
-  { src: 'https://i2.imageban.ru/out/2025/12/24/2712492c8ca7b17a5e1fbaaed76b1566.jpg', alt: 'Dress code photo 7' },
-  { src: 'https://i4.imageban.ru/out/2025/12/24/216700644be4720de55030110e6a3510.jpg', alt: 'Dress code photo 8' },
-  { src: 'https://i8.imageban.ru/out/2025/12/24/5af2003fe44506db2d39ac1cc6cb9048.jpg', alt: 'Dress code photo 9' },
-  { src: 'https://i4.imageban.ru/out/2025/12/24/a64c1d61a8d80caae839f191c87854c0.jpg', alt: 'Dress code photo 10' },
-  { src: 'https://i4.imageban.ru/out/2025/12/24/51d78720520a5c5194050c8265df862e.jpg', alt: 'Dress code photo 11' },
-  { src: 'https://i2.imageban.ru/out/2025/12/24/80b50a77dbafbbab0f9ad0f5e8568526.jpg', alt: 'Dress code photo 12' },
-  { src: 'https://i1.imageban.ru/out/2025/12/24/52dcb11949909c879350e4d1e239b03a.jpg', alt: 'Dress code photo 13' },
-  { src: 'https://i7.imageban.ru/out/2025/12/24/684d1321eadaacfe2e00b3587815a6e7.jpg', alt: 'Dress code photo 14' },
-  { src: 'https://i5.imageban.ru/out/2025/12/24/5355ba5ad44619acd3ec3b65afe95fb8.jpg', alt: 'Dress code photo 16' },
-  { src: 'https://i4.imageban.ru/out/2025/12/24/c4ae1ebabfcc80c9ca4b292598a020f0.jpg', alt: 'Dress code photo 17' },
-  { src: 'https://i4.imageban.ru/out/2025/12/24/63d8ae87ec22526233d08e435c0cc6d7.jpg', alt: 'Dress code photo 18' }
+  { type: 'photo', src: 'https://i4.imageban.ru/out/2025/12/24/502e8967b8d11b76cedbdf2a0878fc8b.jpg', alt: 'Dress code photo 1' },
+  { type: 'photo', src: 'https://i3.imageban.ru/out/2025/12/24/aa22ef772f48a5827a28f13a1d3dd08c.jpg', alt: 'Dress code photo 2' },
+  { type: 'photo', src: 'https://i5.imageban.ru/out/2025/12/24/400f55f579cfbe41f701798a9d73bfae.jpg', alt: 'Dress code photo 3' },
+  { type: 'photo', src: 'https://i1.imageban.ru/out/2025/12/24/34e73e48401bc585c801d75d878459e8.jpg', alt: 'Dress code photo 4' },
+  { type: 'photo', src: 'https://i2.imageban.ru/out/2025/12/24/90a9eeafabe97e2fd63d6b79bd6696d8.jpg', alt: 'Dress code photo 5' },
+  { type: 'photo', src: 'https://i3.imageban.ru/out/2025/12/24/0a22b71b7bcd3705bfe0b6ec7a2b754d.jpg', alt: 'Dress code photo 6' },
+  { type: 'photo', src: 'https://i2.imageban.ru/out/2025/12/24/2712492c8ca7b17a5e1fbaaed76b1566.jpg', alt: 'Dress code photo 7' },
+  { type: 'photo', src: 'https://i4.imageban.ru/out/2025/12/24/216700644be4720de55030110e6a3510.jpg', alt: 'Dress code photo 8' },
+  { type: 'photo', src: 'https://i8.imageban.ru/out/2025/12/24/5af2003fe44506db2d39ac1cc6cb9048.jpg', alt: 'Dress code photo 9' },
+  { type: 'photo', src: 'https://i4.imageban.ru/out/2025/12/24/a64c1d61a8d80caae839f191c87854c0.jpg', alt: 'Dress code photo 10' },
+  { type: 'photo', src: 'https://i4.imageban.ru/out/2025/12/24/51d78720520a5c5194050c8265df862e.jpg', alt: 'Dress code photo 11' },
+  { type: 'photo', src: 'https://i2.imageban.ru/out/2025/12/24/80b50a77dbafbbab0f9ad0f5e8568526.jpg', alt: 'Dress code photo 12' },
+  { type: 'photo', src: 'https://i1.imageban.ru/out/2025/12/24/52dcb11949909c879350e4d1e239b03a.jpg', alt: 'Dress code photo 13' },
+  { type: 'photo', src: 'https://i7.imageban.ru/out/2025/12/24/684d1321eadaacfe2e00b3587815a6e7.jpg', alt: 'Dress code photo 14' },
+  { type: 'photo', src: 'https://i5.imageban.ru/out/2025/12/24/5355ba5ad44619acd3ec3b65afe95fb8.jpg', alt: 'Dress code photo 16' },
+  { type: 'photo', src: 'https://i4.imageban.ru/out/2025/12/24/c4ae1ebabfcc80c9ca4b292598a020f0.jpg', alt: 'Dress code photo 17' },
+  { type: 'photo', src: 'https://i4.imageban.ru/out/2025/12/24/63d8ae87ec22526233d08e435c0cc6d7.jpg', alt: 'Dress code photo 18' },
+  // Текстовая карточка
+  { 
+    type: 'text', 
+    text: 'Мы будем рады видеть вас в нарядах, соответствующих цветовой гамме нашей свадьбы. Основные оттенки для вдохновения вы можете увидеть на фото выше.\n\nПонимаем, что нежно-розовый может подходить не всем, поэтому мы подготовили палитру дополнительных цветов. Выбирайте любой из этих оттенков, чтобы чувствовать себя комфортно и гармонично в этот день!'
+  },
+  // Дополнительные фотографии
+  { type: 'photo', src: 'https://i3.imageban.ru/out/2026/02/15/249ee7ba3732a18c84aca5ec533249ec.jpg', alt: 'Dress code color palette 1' },
+  { type: 'photo', src: 'https://i1.imageban.ru/out/2026/02/15/893d89abc3aa3763cb248100c1f46944.jpg', alt: 'Dress code color palette 2' },
+  { type: 'photo', src: 'https://i5.imageban.ru/out/2026/02/15/ec06f9f870321abd7245e34b22da72a1.jpg', alt: 'Dress code color palette 3' },
+  { type: 'photo', src: 'https://i2.imageban.ru/out/2026/02/15/3294dc9e126499419655d9a961756e39.jpg', alt: 'Dress code color palette 4' },
+  { type: 'photo', src: 'https://i5.imageban.ru/out/2026/02/15/674f1db4531b0e16a847fb26c3563005.jpg', alt: 'Dress code color palette 5' },
+  { type: 'photo', src: 'https://i1.imageban.ru/out/2026/02/15/d03813bee4c3be3fcc703bd96859a3a7.jpg', alt: 'Dress code color palette 6' }
 ])
 
 const lightboxOpen = ref(false)
@@ -453,6 +478,31 @@ const handleSwipe = () => {
   object-fit: contain;
 }
 
+.lightbox-text-card {
+  max-width: 80%;
+  max-height: 90%;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 60px 80px;
+  border-radius: 8px;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dresscode-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: #2c2c2c;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  font-style: italic;
+  text-align: center;
+  white-space: pre-line;
+  margin: 0;
+}
+
 .lightbox-close {
   position: absolute;
   top: 20px;
@@ -528,6 +578,16 @@ const handleSwipe = () => {
   
   .lightbox-next {
     right: 15px;
+  }
+  
+  .lightbox-text-card {
+    max-width: 90%;
+    padding: 40px 30px;
+  }
+  
+  .dresscode-text {
+    font-size: 1.2rem;
+    line-height: 1.5;
   }
 }
 </style>
